@@ -3,6 +3,8 @@ package com.example.database
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.*
@@ -12,8 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         title = "KotlinApp"
-    }
-    fun readTextFile(view: View) {
+
         var goods = arrayOf("ابزارآلات","اکسسوری جانبی خارجات ، بوگیر ، روکش صندلی ، اسپری",
             "قفل","لوازم اسپرت","روشنایی","nan","بدنه اصلی آرم ، رکاب ","برف پاک کن پمپ شیشه شور","چراغ","nan","رینگ، لاستیک و متعلقات",
             "سپر و متعلقات","شیشه و آینه","گلگیر و متعلقات","قطعات داخلی اتاق آمپر ، بوق ","قطعات برقی داخل موتور پمپ ، وایر ، استارت ، دینام ، موتور فن ، واتر پمپ ",
@@ -61,5 +62,22 @@ class MainActivity : AppCompatActivity() {
             "متفرقه","متل","محک","مرسا لنت","مرسدس بنز","مزدا","معیار","مکسس","مگا تولز","مگنت مارلی","موبیس","مهرخواه","میتسوبوشی","میتسوبیشی","میرا","میشلین","ناب","ناچی","ناروا","نکسن",
             "نوتاش","نووا","نیسان","نیسان جنیون پارتس","نیلو خودرو","نئولوکس","واترفال","واکتا","والئو","وایر ایران","وجودی","وست لیک","وینکس","هاتچینسون","هاردکس","هامان","هانکوک","های-کیو",
             "های لنت","هلا","هوندا","هیپو","هیوندای","هیوندای جنیون اکسسوری","هیوندای جنیون پارتز","یزد تایر","یوتا","یوشیتا","یوکوهاما")
+
+        val carNameField = findViewById<AutoCompleteTextView>(R.id.car_name)
+        val goodsNameField = findViewById<AutoCompleteTextView>(R.id.goods_name)
+        val brandNameField = findViewById<AutoCompleteTextView>(R.id.brand_name)
+
+        val carAdapter = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1, cars)
+        carNameField.setAdapter(carAdapter)
+
+        val goodsAdapter = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1, separateGoods)
+        goodsNameField.setAdapter(goodsAdapter)
+
+        val brandAdapter = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1, brands)
+        brandNameField.setAdapter(brandAdapter)
+
     }
 }
