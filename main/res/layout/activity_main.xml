@@ -187,11 +187,12 @@
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/send"
+                android:id="@+id/search"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:onClick="search"
                 android:text="Send" />
         </LinearLayout>
 
