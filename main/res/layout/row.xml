@@ -15,125 +15,319 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="phone 1 : "
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
+        <TextView
             android:id="@+id/phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="09197664124"
-            android:textAlignment="textEnd"
+            android:textAlignment="textStart"
+            android:gravity="start"
             android:textSize="20sp"
             android:layout_weight="2"
-            android:gravity="end" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="شماره تلفن 1 : "
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
+             />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="phone 2 : "
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
         <TextView
             android:id="@+id/phone2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="09197664124"
-            android:textAlignment="textEnd"
+            android:textAlignment="textStart"
+            android:gravity="start"
             android:textSize="20sp"
             android:layout_weight="2"
-            android:gravity="end" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="شماره تلفن 2 : "
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
-
+             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="phone 3 : "
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
+        <TextView
             android:id="@+id/phone3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="09197664124"
-            android:textAlignment="textEnd"
+            android:textAlignment="textStart"
+            android:gravity="start"
             android:textSize="20sp"
             android:layout_weight="2"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="64354"
+            android:textSize="20sp"
+            android:textAlignment="textEnd"
             android:gravity="end" />
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="شماره تلفن 3 : "
             android:textSize="20sp"
-            android:layout_weight="1"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="کد نمایندگی : "
+            android:layout_weight="4"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="64354"
+            android:textSize="20sp"
+            android:textAlignment="textEnd"
+            android:gravity="end" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="ناحیه : "
+            android:layout_weight="4"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/edit1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/edit_icon"
+            />
+        <EditText
+            android:id="@+id/is_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:enabled="false"
+            android:text="64354"
+            android:textSize="20sp"
+            android:textAlignment="textEnd"
+            android:gravity="end" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="ستاره : "
+            android:layout_weight="4"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/edit2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/edit_icon"
+            />
+        <EditText
+            android:id="@+id/star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:maxLength="100"
+            android:text=""
+            android:textSize="20sp"
+            android:enabled="false"
+            android:textAlignment="textStart"
+            android:gravity="start" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="علت ستاره : "
+            android:layout_weight="4"
             />
 
 
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/id"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="کد نمایندگی : " />
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/edit3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/edit_icon"
+            />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="64354"
+            android:enabled="false"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="توضیحات : "
+            android:layout_weight="4"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/edit4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/edit_icon"
+            />
+        <EditText
+            android:id="@+id/have"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="64354"
+            android:enabled="false"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="دارد : "
+            android:layout_weight="4"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/edit5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/edit_icon"
+            />
+        <EditText
+            android:id="@+id/not_have"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text=""
+            android:textSize="20sp"
+            android:enabled="false"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:text="ندارد : "
+            android:layout_weight="4"
+            />
+
+    </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/region"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ناحیه : "
-        android:textSize="20sp" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/is_star"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ستاره :"
-        android:textSize="20sp"
-        />
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="اعمال تغییرات" />
 
-    <TextView
-        android:id="@+id/star"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="علت ستاره :"
-        android:textSize="20sp"
-         />
+        <Button
+            android:id="@+id/full_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="اصلاح کامل"
+            />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="توضیحات :" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/have"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="دارد :" />
-
-    <TextView
-        android:id="@+id/not_have"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="ندارد :" />
 
     <View
         android:layout_width="match_parent"

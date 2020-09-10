@@ -1,6 +1,6 @@
 package com.example.database
 
-class Info (id : String , phone : String , phone2 : String ,phone3 : String ,region : String , isStar : String , star : String , description : String , have : String , notHave : String ) {
+class Info (id : String , phone : String , phone2 : String ,phone3 : String ,region : String , isStar : String , star : String , description : String , have : String , notHave : String , isExist :Boolean ) {
     var id : String = ""
     var phone : String = ""
     var phone2 : String = ""
@@ -11,6 +11,7 @@ class Info (id : String , phone : String , phone2 : String ,phone3 : String ,reg
     var description : String = ""
     var have : String = ""
     var notHave : String = ""
+    var isExist : Boolean = false
     init {
         this.id = id
         this.phone = phone
@@ -22,6 +23,7 @@ class Info (id : String , phone : String , phone2 : String ,phone3 : String ,reg
         this.description = description
         this.have = have
         this.notHave = notHave
+        this.isExist = isExist
     }
 
 }

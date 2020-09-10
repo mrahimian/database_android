@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(),View.OnFocusChangeListener {
     lateinit var brandNameField : AutoCompleteTextView
     lateinit var carCodeField : EditText
     lateinit var brandCodeField : EditText
+    lateinit var keyCode : EditText
     lateinit var match : HashMap<String,String>
 
 
@@ -98,9 +99,7 @@ class MainActivity : AppCompatActivity(),View.OnFocusChangeListener {
             brandCodeField.setText((findCode(brands, selectedItem)+1).toString())
 
         }
-//var text : String = v.text.toString()
-//                        var index = goodsCodes.indexOf(text)
-//                        goodsNameField.setText(goods[index])
+
         carCodeField = findViewById(R.id.car_code)
         goodsCodeField = findViewById(R.id.goods_code)
         goodsCodeField.onItemClickListener = AdapterView.OnItemClickListener{
@@ -130,9 +129,12 @@ class MainActivity : AppCompatActivity(),View.OnFocusChangeListener {
             android.R.layout.simple_list_item_1, brands)
         brandNameField.setAdapter(brandAdapter)
 
+        keyCode = findViewById(R.id.key_code)
     }
 
     fun search (v : View){
+        val key = keyCode.text.toString()
+        val parts : List<String> = key.split(";")
         var intent : Intent = Intent(this, MainActivity2::class.java)
         intent.putExtra("carName",carNameField.text.toString())
         intent.putExtra("carCode",carCodeField.text.toString())
@@ -140,6 +142,7 @@ class MainActivity : AppCompatActivity(),View.OnFocusChangeListener {
         intent.putExtra("goodsCode",goodsCodeField.text.toString())
         intent.putExtra("brandName",brandNameField.text.toString())
         intent.putExtra("brandCode",brandCodeField.text.toString())
+        intent.putExtra("key",parts.toTypedArray())
         startActivity(intent)
     }
 
@@ -150,15 +153,15 @@ class MainActivity : AppCompatActivity(),View.OnFocusChangeListener {
                 if (v != null) {
                     try {
                     if (v.id == carCodeField.id) {
-                        carNameField.setText(cars[carCodeField.text.toString().toInt()])
+                        carNameField.setText(cars[carCodeField.text.toString().toInt() - 1])
                     } else if (v.id == brandCodeField.id) {
                         brandNameField.setText(brands[brandCodeField.text.toString().toInt() - 1])
                     }
-                    /*else if(v.id == goodsCodeField.id){
+                    else if(v.id == goodsCodeField.id){
                         var text : String = v.text.toString()
                         var index = goodsCodes.indexOf(text)
                         goodsNameField.setText(goods[index])
-                    }*/
+                    }
                 }catch(e : Exception){}
                 }
             }else{

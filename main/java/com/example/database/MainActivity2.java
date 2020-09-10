@@ -29,6 +29,7 @@ import java.util.concurrent.Executors;
 
 public class MainActivity2 extends AppCompatActivity {
     List<Info> info;
+    List<Info> clone;
     ListView listView;
     InfoAdapter infoAdapter;
     String carName;
@@ -37,6 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
     String goodsCode;
     String brandName;
     String brandCode;
+    String[] keys;
     boolean finishProgress = false;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -45,6 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         listView = findViewById(R.id.listview);
         info = new ArrayList<>();
+        clone = new ArrayList<>();
         Intent intent = getIntent();
         carName = intent.getStringExtra("carName");
         carCode = intent.getStringExtra("carCode");
@@ -52,14 +55,16 @@ public class MainActivity2 extends AppCompatActivity {
         goodsCode = intent.getStringExtra("goodsCode");
         brandName = intent.getStringExtra("brandName");
         brandCode = intent.getStringExtra("brandCode");
+        keys = intent.getStringArrayExtra("key");
         StartConnecting st = new StartConnecting(this);
         st.execute();
         refreshDisplay();
     }
 
     void refreshDisplay() {
-        infoAdapter = new InfoAdapter(this, info);
+        infoAdapter = new InfoAdapter(this, clone);
         listView.setAdapter(infoAdapter);
+
     }
 
     private class StartConnecting extends AsyncTask<String, Void, String> {
@@ -81,9 +86,17 @@ public class MainActivity2 extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... arg0) {
-            String carQuery = "(AvalableCar like '%"+carCode+";%')";
-            String goodsQuery = "(Category like '%"+goodsCode+";%')";
+            carCode = check(carCode);
+            goodsCode = check(goodsCode);
+            brandCode = check(brandCode);
+            if (!brandCode.equals("") && brandName.equals("")){
+                brandName = "----------";
+            }
+            String carQuery = "(AvalableCar like '%"+carCode+"%')";
+            String goodsQuery = "(Category like '%"+goodsCode+"%')";
             String brandQuery = "(AvalableBrand like '%"+brandCode+"%' or AvalableBrand COLLATE Persian_100_CI_AS like N'%"+brandName+"%')";
+            String keyQuery = keys.length != 1 ? keyQuery(keys) : "";
+
 
             String _user = "sa";
             String _pass = "hamdi@0912";
@@ -101,7 +114,7 @@ public class MainActivity2 extends AppCompatActivity {
                         + _pass + ";";
                 conn = DriverManager.getConnection(ConnURL);
 
-                String queryStmt = "select * from dbo.MidStore where " + carQuery + " and " + goodsQuery + " and " + brandQuery;
+                String queryStmt = "select * from dbo.MidStore where " + carQuery + " and " + goodsQuery + " and " + brandQuery + keyQuery;
 
                 Statement stmt = conn.createStatement();
                 ResultSet rslt = stmt.executeQuery(queryStmt);
@@ -114,19 +127,22 @@ public class MainActivity2 extends AppCompatActivity {
                     String phone3 = rslt.getString(10);
                     String region = rslt.getString(4);
                     String isStar = rslt.getString(2);
+                    if (isStar == null){
+                        isStar = "0";
+                    }
                     String star = rslt.getString(3);
                     String description = rslt.getString(33);
-                    Info inf = new Info("کد نمایندگی : " + id , phone , phone2,phone3, "ناحیه : " + region,"ستاره : " + isStar,"علت ستاره : " + star,"توضیحات : " + description,"دارد : ","ندارد : ");
+                    String have = rslt.getString(34);
+                    Boolean check = checkExistion(keys,have);
+                    String notHave = rslt.getString(35);
+                    Info inf = new Info( ""+id , ""+phone , ""+phone2,""+phone3, ""+region,""+isStar,""+star,""+description,""+have, ""+notHave,check);
                     info.add(inf);
                 }
                 stmt.close();
                 conn.close();
                 rslt.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                Log.e("ERRO", e.getMessage());
-            } catch (Exception e) {
+            }  catch (Exception e) {
+//                Toast.makeText(context,"PLEASE CHECK YOUR CONNECTION!", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
             return null;
@@ -135,8 +151,78 @@ public class MainActivity2 extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
                 pd.dismiss();
+                sort();
                 refreshDisplay();
             super.onPostExecute(result);
+        }
+
+        String check (String s){
+            if (s.equals("")){
+                return s;
+            }
+            return ";" + s + ";";
+        }
+
+        String keyQuery(String[] args){
+            String query = " and (NotExist COLLATE Persian_100_CI_AS not like N'%";
+            for (int i = 0; i < args.length ; i++){
+                args[i] = args[i].trim();
+                query += (args[i] + "%'");
+                if ( i != args.length-1){
+                    query += "and NotExist COLLATE Persian_100_CI_AS not like N'%";
+                }
+            }
+            query += ")";
+            return query;
+        }
+
+        boolean checkExistion(String[] keys , String arg ){
+            boolean flag = false;
+            for (int i = 0; i < keys.length; i++) {
+                if (!keys[i].equals("")){
+                    flag = true;
+                }
+            }
+            if(!flag)return false;
+            for (String s : keys ){
+                if (!arg.contains(s)){
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        void sort(){
+            for (int i = 0; i <  info.size(); i++) {
+                if (info.get(i).isExist() && info.get(i).is_star().equals("2")){
+                    clone.add(info.get(i));
+                }
+            }
+            for (int i = 0; i <  info.size(); i++) {
+                if (info.get(i).isExist() && info.get(i).is_star().equals("1")){
+                    clone.add(info.get(i));
+                }
+            }
+            for (int i = 0; i <  info.size(); i++) {
+                if (info.get(i).isExist() && info.get(i).is_star().equals("0")){
+                    clone.add(info.get(i));
+                }
+            }
+            for (int i = 0; i <  info.size(); i++) {
+                if (!info.get(i).isExist() && info.get(i).is_star().equals("2")){
+                    clone.add(info.get(i));
+                }
+            }
+            for (int i = 0; i <  info.size(); i++) {
+                if (!info.get(i).isExist() && info.get(i).is_star().equals("1")){
+                    clone.add(info.get(i));
+                }
+            }
+            for (int i = 0; i <  info.size(); i++) {
+                if (!info.get(i).isExist() && info.get(i).is_star().equals("0")){
+                    clone.add(info.get(i));
+                }
+            }
         }
     }
 
