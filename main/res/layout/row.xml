@@ -153,7 +153,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:enabled="false"
-            android:text="64354"
             android:textSize="20sp"
             android:textAlignment="textEnd"
             android:gravity="end" />
@@ -185,10 +184,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:maxLength="100"
-            android:text=""
-            android:textSize="20sp"
             android:enabled="false"
+            android:maxLength="100"
+            android:textSize="15sp"
             android:textAlignment="textStart"
             android:gravity="start" />
         <TextView
@@ -198,7 +196,7 @@
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="علت ستاره : "
-            android:layout_weight="4"
+            android:layout_weight="3"
             />
 
 
@@ -221,9 +219,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="64354"
             android:enabled="false"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAlignment="textStart"
             android:gravity="start" />
         <TextView
@@ -254,9 +251,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="64354"
             android:enabled="false"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAlignment="textStart"
             android:gravity="start" />
         <TextView
@@ -287,8 +283,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:enabled="false"
             android:textAlignment="textStart"
             android:gravity="start"

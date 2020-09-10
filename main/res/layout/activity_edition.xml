@@ -4,16 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
-    tools:context=".MainActivity2">
-
+    tools:context=".Edition">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview">
-    </ListView>
-
-
+        android:id="@+id/lv"/>
 
 </RelativeLayout>

@@ -21,7 +21,10 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
     public void createRow(View v){
-//        startActivity(new Intent(ChooseActivity.this,MainActivity.class));
+        startActivity(new Intent(ChooseActivity.this,FullEditActivity.class));
+    }
 
+    public void seeEdits(View v){
+        startActivity(new Intent(ChooseActivity.this,Edition.class));
     }
 }

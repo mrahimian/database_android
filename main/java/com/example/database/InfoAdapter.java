@@ -17,7 +17,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class InfoAdapter extends ArrayAdapter {
@@ -146,7 +155,8 @@ public class InfoAdapter extends ArrayAdapter {
                     View parentRow = (View) v.getParent().getParent();
                     ListView listView = (ListView) parentRow.getParent();
                     final int position = listView.getPositionForView(parentRow);
-
+                    Edit edit = new Edit(v.getContext(),info.get(position),getParams());
+                    edit.execute();
                     break;
 
                 default:
@@ -157,12 +167,13 @@ public class InfoAdapter extends ArrayAdapter {
             }
 
         }
-        void getParams(){
+        String[] getParams(){
             score = isStar.getText().toString();
             scoreDes = star.getText().toString();
             des = description.getText().toString();
             exist = have.getText().toString();
             notExist = notHave.getText().toString();
+            return new String[]{score,scoreDes,des,exist,notExist};
         }
     }
 
@@ -170,8 +181,15 @@ public class InfoAdapter extends ArrayAdapter {
 
         ProgressDialog pd;
         Context context;
+        Info former;
+        String[] current;
 
-        public Edit(Context context) { this.context = context; }
+        public Edit(Context context, Info former, String[] current) {
+            this.context = context;
+            this.former = former;
+            this.current = current;
+        }
+
         @Override
         protected void onPreExecute() {
             pd = new ProgressDialog(context);
@@ -183,14 +201,71 @@ public class InfoAdapter extends ArrayAdapter {
 
         @Override
         protected String doInBackground(String... strings) {
+            String _user = "sa";
+            String _pass = "hamdi@0912";
+            String _DB = "yadak";
+            String _server = "176.9.199.181";
 
+            Connection conn = null;
+            String ConnURL = null;
+            try {
+                Class.forName("net.sourceforge.jtds.jdbc.Driver");
+                ConnURL = "jdbc:jtds:sqlserver://" + _server + ";"
+                        + "databaseName=" + _DB + ";user=" + _user + ";password="
+                        + _pass + ";";
+                conn = DriverManager.getConnection(ConnURL);
+
+                Statement stmt = conn.createStatement();
+
+                String q2 = "update dbo.MidStore set isStared = '" + current[0] + "' , StarDescribtion = N'" +current[1] + "' " +
+                        ", Describtion = N'" + current[2] +  "' , Exist = N'" + current[3] + "' , NotExist = N'" + current[4] + "' " +
+                        "where id = '" + former.getId() + "'";
+                stmt.executeUpdate(q2);
+
+                String edition = userEditionQuery();
+                stmt.executeUpdate("insert into dbo.users values (N'" + edition + "')");
+
+
+                stmt.close();
+                conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(String s) {
             pd.dismiss();
+            Toast.makeText(context,"Edit Has Successfully Done" , Toast.LENGTH_SHORT).show();
             super.onPostExecute(s);
+        }
+
+        String userEditionQuery(){
+            String query = LoginActivity.user + "\n";
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            query += dateFormat.format(date) + "\n";
+            if (!current[0].trim().equals(former.is_star().trim())){
+                query += ("ستاره 1 : " + former.is_star() + " ستاره 2 : " + current[0] + "\n");
+            }
+            if (!current[1].trim().equals(former.getStar().trim())){
+                query += ("توضیحات ستاره 1 : " + former.getStar() + " توضیحات ستاره 2 : " + current[1] + "\n");
+            }
+            if (!current[2].trim().equals(former.getDescription().trim())){
+                query += ("توضیحات 1 : " + former.getDescription() + " توضیحات 2 : " + current[2] + "\n");
+            }
+            if (!current[3].trim().equals(former.getHave().trim())){
+                query += ("دارد 1 : " + former.getHave() + " دارد 2 : " + current[3] + "\n");
+            }
+            if (!current[4].trim().equals(former.getNotHave().trim())){
+                query += ("ندارد 1 : " + former.getNotHave() + " ندارد 2 : " + current[4] + "\n");
+            }
+            return query;
         }
     }
 }

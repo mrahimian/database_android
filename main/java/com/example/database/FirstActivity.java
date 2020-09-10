@@ -28,7 +28,6 @@ public class FirstActivity extends AppCompatActivity {
         logo.animate().alpha(1.0f).setDuration(3000);
         float x1 =logo.getTranslationX();
         float y1 =logo.getTranslationX();
-//        TranslateAnimation tr = new TranslateAnimation(x1,y1,x1,0);
         TranslateAnimation tr = new TranslateAnimation(x1,x1,y1-500,y1);
         tr.setDuration(3000);
         tr.setAnimationListener(new Animation.AnimationListener() {
@@ -51,30 +50,4 @@ public class FirstActivity extends AppCompatActivity {
 //        Start st = new Start(this);
     }
 
-    private class Start extends AsyncTask<String,Void,String> {
-        Context context;
-        Start(Context context){
-            this.context = context;
-        }
-        @Override
-        protected void onPreExecute() {
-            ProgressDialog pb = new ProgressDialog(context);
-            pb.show();
-            logo.animate().alpha(1.0f).setDuration(6000);
-            logo.animate().translationY(0).setDuration(3000);
-            Toast.makeText(context,"jikjdf",Toast.LENGTH_LONG);
-        }
-
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
-    }
 }

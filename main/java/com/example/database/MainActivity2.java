@@ -39,7 +39,6 @@ public class MainActivity2 extends AppCompatActivity {
     String brandName;
     String brandCode;
     String[] keys;
-    boolean finishProgress = false;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,6 @@ public class MainActivity2 extends AppCompatActivity {
     void refreshDisplay() {
         infoAdapter = new InfoAdapter(this, clone);
         listView.setAdapter(infoAdapter);
-
     }
 
     private class StartConnecting extends AsyncTask<String, Void, String> {
