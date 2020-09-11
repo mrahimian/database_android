@@ -39,6 +39,8 @@ public class MainActivity2 extends AppCompatActivity {
     String brandName;
     String brandCode;
     String[] keys;
+    boolean sqlException = false;
+    boolean netException = false;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,8 +141,13 @@ public class MainActivity2 extends AppCompatActivity {
                 stmt.close();
                 conn.close();
                 rslt.close();
-            }  catch (Exception e) {
-//                Toast.makeText(context,"PLEASE CHECK YOUR CONNECTION!", Toast.LENGTH_SHORT).show();
+
+            }catch (SQLException se){
+                sqlException = true;
+            }
+            catch (Exception e) {
+                Toast.makeText(context,"PLEASE CHECK YOUR CONNECTION!", Toast.LENGTH_SHORT).show();
+                netException = true;
                 e.printStackTrace();
             }
             return null;
@@ -148,9 +155,9 @@ public class MainActivity2 extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-                pd.dismiss();
-                sort();
-                refreshDisplay();
+            pd.dismiss();
+            sort();
+            refreshDisplay();
             super.onPostExecute(result);
         }
 

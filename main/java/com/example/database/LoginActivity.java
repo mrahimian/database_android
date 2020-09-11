@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
     HashMap<String,String> users;
@@ -32,8 +33,11 @@ public class LoginActivity extends AppCompatActivity {
 
     void setUsers(){
         users = new HashMap<>();
-        for (int j = 101; j <= 130 ; j++) {
-            users.put("user" + j, "" + j) ;
+        users.put("mahdi","admin");
+        String[] passes = new String[]{"148","781","126","157","456","785","418","741","127","982","943","990","367","307","206","289",
+        "111","671","687","807","891","137","946","453","888","369","408","579","508","600"};
+        for (int j = 101,i=0; j <= 130 ; j++,i++) {
+            users.put("user" + j, passes[i]) ;
         }
     }
 

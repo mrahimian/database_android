@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,8 +63,7 @@ public class InfoAdapter extends ArrayAdapter {
             holder.e4 = convertView.findViewById(R.id.edit4);
             holder.e5 = convertView.findViewById(R.id.edit5);
             holder.edit = convertView.findViewById(R.id.edit);
-
-
+            holder.fullEdit = convertView.findViewById(R.id.full_edit);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -73,11 +71,13 @@ public class InfoAdapter extends ArrayAdapter {
         if (i.is_star().equals("2")){
             convertView.setBackgroundColor(Color.rgb(0,255,255));
         }
-        else if (i.is_star().equals("1")){
-            convertView.setBackgroundColor(Color.rgb(51,204,166));
-        }
         else {
-            convertView.setBackgroundColor(Color.WHITE);
+            if (i.isExist()){
+                convertView.setBackgroundColor(Color.rgb(51,204,166));
+            }
+            else {
+                convertView.setBackgroundColor(Color.WHITE);
+            }
         }
 
         holder.fill(i);
@@ -104,6 +104,7 @@ public class InfoAdapter extends ArrayAdapter {
         public ImageButton e4;
         public ImageButton e5;
         public Button edit;
+        public Button fullEdit;
         String score ;
         String scoreDes ;
         String des ;
@@ -126,6 +127,7 @@ public class InfoAdapter extends ArrayAdapter {
             have.setText(info.getHave());
             notHave.setText(info.getNotHave());
             edit.setOnClickListener(this);
+            fullEdit.setOnClickListener(this);
             e1.setOnClickListener(this);
             e2.setOnClickListener(this);
             e3.setOnClickListener(this);
@@ -157,6 +159,11 @@ public class InfoAdapter extends ArrayAdapter {
                     final int position = listView.getPositionForView(parentRow);
                     Edit edit = new Edit(v.getContext(),info.get(position),getParams());
                     edit.execute();
+                    break;
+                case R.id.full_edit:
+                    Intent in = new Intent(getContext(),FullEdit.class);
+                    in.putExtra("id",id.getText());
+                    getContext().startActivity(in);
                     break;
 
                 default:
@@ -250,20 +257,21 @@ public class InfoAdapter extends ArrayAdapter {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             query += dateFormat.format(date) + "\n";
+            query += "کد فروشگاه : " + former.getId() + "\n";
             if (!current[0].trim().equals(former.is_star().trim())){
                 query += ("ستاره 1 : " + former.is_star() + " ستاره 2 : " + current[0] + "\n");
             }
             if (!current[1].trim().equals(former.getStar().trim())){
-                query += ("توضیحات ستاره 1 : " + former.getStar() + " توضیحات ستاره 2 : " + current[1] + "\n");
+                query += ("توضیحات ستاره 1 : " + former.getStar() + "\n" + " توضیحات ستاره 2 : " + current[1] + "\n");
             }
             if (!current[2].trim().equals(former.getDescription().trim())){
-                query += ("توضیحات 1 : " + former.getDescription() + " توضیحات 2 : " + current[2] + "\n");
+                query += ("توضیحات 1 : " + former.getDescription() + "\n" + " توضیحات 2 : " + current[2] + "\n");
             }
             if (!current[3].trim().equals(former.getHave().trim())){
-                query += ("دارد 1 : " + former.getHave() + " دارد 2 : " + current[3] + "\n");
+                query += ("دارد 1 : " + former.getHave() + " دارد 2 : " + "\n" + current[3] + "\n");
             }
             if (!current[4].trim().equals(former.getNotHave().trim())){
-                query += ("ندارد 1 : " + former.getNotHave() + " ندارد 2 : " + current[4] + "\n");
+                query += ("ندارد 1 : " + former.getNotHave() + " ندارد 2 : " + "\n" + current[4] + "\n");
             }
             return query;
         }

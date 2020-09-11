@@ -14,23 +14,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="phone 1 : "
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
+
         <TextView
             android:id="@+id/phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="09197664124"
-            android:textAlignment="textStart"
-            android:gravity="start"
+            android:textAlignment="textEnd"
+            android:gravity="end"
             android:textSize="20sp"
             android:layout_weight="2"
              />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="شماره 1 : "
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
 
     </LinearLayout>
 
@@ -40,23 +44,26 @@
         android:orientation="horizontal">
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="phone 2 : "
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
         <TextView
             android:id="@+id/phone2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="09197664124"
-            android:textAlignment="textStart"
-            android:gravity="start"
+            android:textAlignment="textEnd"
+            android:gravity="end"
             android:textSize="20sp"
             android:layout_weight="2"
              />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="شماره 2 : "
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -65,21 +72,24 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="phone 3 : "
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-        <TextView
             android:id="@+id/phone3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="09197664124"
-            android:textAlignment="textStart"
-            android:gravity="start"
+            android:textAlignment="textEnd"
+            android:gravity="end"
             android:textSize="20sp"
             android:layout_weight="2"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="موبایل : "
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:gravity="start"
+            android:layout_weight="1"
             />
 
     </LinearLayout>
@@ -91,7 +101,7 @@
 
         <TextView
             android:id="@+id/id"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="64354"
@@ -99,13 +109,13 @@
             android:textAlignment="textEnd"
             android:gravity="end" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="کد نمایندگی : "
-            android:layout_weight="4"
+            android:layout_weight="1"
             />
 
     </LinearLayout>
@@ -117,7 +127,7 @@
 
         <TextView
             android:id="@+id/region"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="64354"
@@ -125,13 +135,13 @@
             android:textAlignment="textEnd"
             android:gravity="end" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="ناحیه : "
-            android:layout_weight="4"
+            android:layout_weight="1"
             />
 
     </LinearLayout>
@@ -149,7 +159,7 @@
             />
         <EditText
             android:id="@+id/is_star"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:enabled="false"
@@ -157,20 +167,22 @@
             android:textAlignment="textEnd"
             android:gravity="end" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="ستاره : "
-            android:layout_weight="4"
+            android:layout_weight="1"
             />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
 
         <ImageButton
             android:id="@+id/edit2"
@@ -181,22 +193,23 @@
             />
         <EditText
             android:id="@+id/star"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:enabled="false"
-            android:maxLength="100"
             android:textSize="15sp"
+            android:enabled="false"
+            android:text=""
+            android:layout_weight="2"
+            android:textCursorDrawable="@null"
             android:textAlignment="textStart"
             android:gravity="start" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
+            android:layout_weight="1"
             android:text="علت ستاره : "
-            android:layout_weight="3"
             />
 
 
@@ -216,21 +229,22 @@
 
         <EditText
             android:id="@+id/description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:cursorVisible="true"
+            android:layout_weight="4"
             android:enabled="false"
             android:textSize="15sp"
             android:textAlignment="textStart"
             android:gravity="start" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="توضیحات : "
-            android:layout_weight="4"
+            android:layout_weight="2"
             />
 
     </LinearLayout>
@@ -248,21 +262,21 @@
             />
         <EditText
             android:id="@+id/have"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:enabled="false"
             android:textSize="15sp"
             android:textAlignment="textStart"
             android:gravity="start" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="دارد : "
-            android:layout_weight="4"
+            android:layout_weight="2"
             />
 
     </LinearLayout>
@@ -280,22 +294,22 @@
             />
         <EditText
             android:id="@+id/not_have"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:textSize="15sp"
             android:enabled="false"
             android:textAlignment="textStart"
             android:gravity="start"
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="textStart"
             android:gravity="start"
             android:text="ندارد : "
-            android:layout_weight="4"
+            android:layout_weight="2"
             />
 
     </LinearLayout>
@@ -308,17 +322,18 @@
 
         <Button
             android:id="@+id/edit"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="اعمال تغییرات" />
 
         <Button
             android:id="@+id/full_edit"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:text="اصلاح کامل"
+            android:layout_gravity="top"
             />
 
     </LinearLayout>

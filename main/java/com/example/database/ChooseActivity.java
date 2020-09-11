@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class ChooseActivity extends AppCompatActivity {
 
@@ -25,6 +26,11 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
     public void seeEdits(View v){
-        startActivity(new Intent(ChooseActivity.this,Edition.class));
+        if (LoginActivity.user.trim().equals("mahdi")) {
+            startActivity(new Intent(ChooseActivity.this, Edition.class));
+        }
+        else {
+            Toast.makeText(this,"دسترسی به این قسمت برای شما مجاز نمی باشد" , Toast.LENGTH_SHORT).show();
+        }
     }
 }

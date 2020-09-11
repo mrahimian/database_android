@@ -9,12 +9,13 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".Edition"></activity>
+        <activity android:name=".FullEdit"></activity>
+        <activity android:name=".Edition" />
         <activity android:name=".FullEditActivity" />
         <activity android:name=".ChooseActivity" />
-        <activity android:name=".MainActivity2" />
+        <activity android:name=".MainActivity2" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".FirstActivity">
