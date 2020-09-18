@@ -209,9 +209,9 @@ public class InfoAdapter extends ArrayAdapter {
         @Override
         protected String doInBackground(String... strings) {
             String _user = "sa";
-            String _pass = "hamdi@0912";
-            String _DB = "yadak";
-            String _server = "176.9.199.181";
+            String _pass = "----";
+            String _DB = "----";
+            String _server = "----";
 
             Connection conn = null;
             String ConnURL = null;
