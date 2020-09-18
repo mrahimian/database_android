@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void setUsers(){
         users = new HashMap<>();
-        users.put("mahdi","admin");
+        users.put("--","--");
         String[] passes = new String[]{"148","781","126","157","456","785","418","741","127","982","943","990","367","307","206","289",
         "111","671","687","807","891","137","946","453","888","369","408","579","508","600"};
         for (int j = 101,i=0; j <= 130 ; j++,i++) {
